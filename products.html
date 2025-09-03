@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | LuxLiving</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+      <!-- Navigation -->
+      <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">LuxLiving</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="products.html" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>Living Room</h4>
+                            <a href="products.html?category=sofas">Sofas & Sectionals</a>
+                            <a href="products.html?category=recliners">Recliners</a>
+                            <a href="products.html?category=coffee-tables">Coffee Tables</a>
+                            <a href="products.html?category=tv-stands">TV Stands</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Office</h4>
+                            <a href="products.html?category=office-chairs">Executive Chairs</a>
+                            <a href="products.html?category=desks">Desks & Workstations</a>
+                            <a href="products.html?category=conference-tables">Conference Tables</a>
+                            <a href="products.html?category=office-storage">Office Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kitchen & Dining</h4>
+                            <a href="products.html?category=dining-sets">Dining Sets</a>
+                            <a href="products.html?category=kitchen-islands">Kitchen Islands</a>
+                            <a href="products.html?category=bar-stools">Bar Stools</a>
+                            <a href="products.html?category=kitchen-storage">Kitchen Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kids & Storage</h4>
+                            <a href="products.html?category=kids-beds">Kids Beds</a>
+                            <a href="products.html?category=bunk-beds">Bunk Beds</a>
+                            <a href="products.html?category=wardrobes">Wardrobes</a>
+                            <a href="products.html?category=storage-solutions">Storage Solutions</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Decor & Accessories</h4>
+                            <a href="products.html?category=lighting">Lighting</a>
+                            <a href="products.html?category=mirrors">Mirrors</a>
+                            <a href="products.html?category=rugs">Rugs & Carpets</a>
+                            <a href="products.html?category=wall-art">Wall Art</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="services.html" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#delivery">Delivery & Installation</a>
+                        <a href="services.html#assembly">Assembly Services</a>
+                        <a href="services.html#interior-design">Interior Design</a>
+                        <a href="services.html#custom-furniture">Custom Furniture</a>
+                        <a href="quote.html">Request Quote</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                </li>
+            </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Search products..." id="search-input">
+                <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Header -->
+    <section class="hero products-hero">
+        <div class="hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Products</span>
+            </div>
+            <h1>Our Premium Collection</h1>
+            <p>Discover furniture that combines elegance, comfort, and functionality</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="number">500+</span>
+                    <span class="label">Products</span>
+                </div>
+                <div class="stat">
+                    <span class="number">50K+</span>
+                    <span class="label">Happy Customers</span>
+                </div>
+                <div class="stat">
+                    <span class="number">5★</span>
+                    <span class="label">Average Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter and Sort Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-stats">
+                <span id="product-count">Showing all products</span>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                    <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+            <div class="filter-container">
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">All Products</button>
+                    <button class="filter-btn" data-filter="living">Living Room</button>
+                    <button class="filter-btn" data-filter="bedroom">Bedroom</button>
+                    <button class="filter-btn" data-filter="office">Office</button>
+                    <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+                </div>
+                <div class="filter-controls">
+                    <div class="price-filter">
+                        <label>Price Range:</label>
+                        <select id="price-range">
+                            <option value="all">All Prices</option>
+                            <option value="0-500">$0 - $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-2000">$1,000 - $2,000</option>
+                            <option value="2000+">$2,000+</option>
+                        </select>
+                    </div>
+                    <div class="sort-options">
+                        <select aria-label="Sort products" id="sort-select">
+                            <option value="default">Sort by</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name-asc">Name: A to Z</option>
+                            <option value="name-desc">Name: Z to A</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="products-grid" id="all-products">
+                <!-- Products will be loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>LuxLiving</h3>
+                <p>Creating beautiful spaces with premium furniture since 2010.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for updates and offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LuxLiving. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <style>
+        .filter-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        #product-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+        }
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .view-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .price-filter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .price-filter label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .price-filter select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        .product-card {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .product-card .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        .product-card .wishlist-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        .product-card .wishlist-icon:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0.5rem 0;
+        }
+        .breadcrumb {
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: white;
+        }
+        .breadcrumb i {
+            margin: 0 0.5rem;
+            font-size: 0.7rem;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero-stats .stat {
+            text-align: center;
+        }
+        .hero-stats .number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        .hero-stats .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            .hero-stats {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            .hero-stats .number {
+                font-size: 1.5rem;
+            }
+            .products-hero {
+                padding: 60px 0 40px;
+            }
+            .products-hero h1 {
+                font-size: 2.2rem;
+            }
+            .filter-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .filter-options {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .filter-btn {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .products-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+            }
+            .hero-stats {
+                justify-content: space-around;
+                gap: 1rem;
+            }
+            .filter-stats {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .breadcrumb {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-hero {
+                padding: 50px 0 30px;
+            }
+            .products-hero h1 {
+                font-size: 1.8rem;
+            }
+            .products-hero p {
+                font-size: 0.9rem;
+            }
+            .hero-stats .stat {
+                min-width: 80px;
+            }
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+            .view-btn {
+                width: 35px;
+                height: 35px;
+            }
+            .product-card {
+                padding: 1rem;
+            }
+        }
+        .product-rating .stars {
+            color: #ffd700;
+            font-size: 0.9rem;
+        }
+        .product-rating .rating-count {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        /* Products page specific responsive styles */
+        @media (max-width: 991px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+            .filter-stats {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            .price-filter {
+                justify-content: center;
+            }
+            .sort-options {
+                text-align: center;
+            }
+            .sort-options select {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+    <script>
+        // Enhanced product card creation
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            const badge = product.featured ? '<div class="product-badge">Featured</div>' : '';
+            const rating = Math.floor(Math.random() * 5) + 4; // Random rating 4-5
+            const reviewCount = Math.floor(Math.random() * 200) + 50;
+            
+            card.innerHTML = `
+                ${badge}
+                <button class="wishlist-icon"><i class="far fa-heart"></i></button>
+                <div class="product-img">
+                    <img src="${product.images[0]}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <div class="product-rating">
+                        <div class="stars">
+                            ${'<i class="fas fa-star"></i>'.repeat(rating)}
+                        </div>
+                        <span class="rating-count">(${reviewCount})</span>
+                    </div>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <a href="product-details.html?id=${product.id}" class="view-details">View Details</a>
+                </div>
+            `;
+            return card;
+        }
+        
+        // View toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewBtns = document.querySelectorAll('.view-btn');
+            const productsGrid = document.getElementById('all-products');
+            
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    viewBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const view = this.dataset.view;
+                    if (view === 'list') {
+                        productsGrid.style.gridTemplateColumns = '1fr';
+                        productsGrid.querySelectorAll('.product-card').forEach(card => {
+                            card.style.display = 'flex';
+                            card.style.alignItems = 'center';
+                        });
+                    } else {
+                        productsGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+                        productsGrid.querySelectorAll('.product-card').forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

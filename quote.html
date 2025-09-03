@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Quote | LuxLiving</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">LuxLiving</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="products.html" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>Living Room</h4>
+                            <a href="products.html?category=sofas">Sofas & Sectionals</a>
+                            <a href="products.html?category=recliners">Recliners</a>
+                            <a href="products.html?category=coffee-tables">Coffee Tables</a>
+                            <a href="products.html?category=tv-stands">TV Stands</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Office</h4>
+                            <a href="products.html?category=office-chairs">Executive Chairs</a>
+                            <a href="products.html?category=desks">Desks & Workstations</a>
+                            <a href="products.html?category=conference-tables">Conference Tables</a>
+                            <a href="products.html?category=office-storage">Office Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kitchen & Dining</h4>
+                            <a href="products.html?category=dining-sets">Dining Sets</a>
+                            <a href="products.html?category=kitchen-islands">Kitchen Islands</a>
+                            <a href="products.html?category=bar-stools">Bar Stools</a>
+                            <a href="products.html?category=kitchen-storage">Kitchen Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kids & Storage</h4>
+                            <a href="products.html?category=kids-beds">Kids Beds</a>
+                            <a href="products.html?category=bunk-beds">Bunk Beds</a>
+                            <a href="products.html?category=wardrobes">Wardrobes</a>
+                            <a href="products.html?category=storage-solutions">Storage Solutions</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Decor & Accessories</h4>
+                            <a href="products.html?category=lighting">Lighting</a>
+                            <a href="products.html?category=mirrors">Mirrors</a>
+                            <a href="products.html?category=rugs">Rugs & Carpets</a>
+                            <a href="products.html?category=wall-art">Wall Art</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="services.html" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#delivery">Delivery & Installation</a>
+                        <a href="services.html#assembly">Assembly Services</a>
+                        <a href="services.html#interior-design">Interior Design</a>
+                        <a href="services.html#custom-furniture">Custom Furniture</a>
+                        <a href="quote.html">Request Quote</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quote Hero -->
+    <section class="quote-hero">
+        <div class="container">
+            <h1>Request a Quote</h1>
+            <p>Get personalized pricing for our products and services</p>
+        </div>
+    </section>
+
+    <!-- Quote Form -->
+    <section class="quote-form-section">
+        <div class="container">
+            <div class="quote-container">
+                <div class="quote-form">
+                    <h2>Tell Us About Your Project</h2>
+                    <form id="quoteForm">
+                        <!-- Service Type -->
+                        <div class="form-group">
+                            <label for="serviceType">Service Type *</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">Select a service</option>
+                                <option value="delivery">Delivery & Installation</option>
+                                <option value="assembly">Assembly Services</option>
+                                <option value="design">Interior Design Consultation</option>
+                                <option value="custom">Custom Furniture</option>
+                                <option value="bulk">Bulk/Corporate Order</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group">
+                            <label for="address">Service Address</label>
+                            <input type="text" id="address" name="address" placeholder="Street address">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">ZIP Code</label>
+                                <input type="text" id="zipCode" name="zipCode">
+                            </div>
+                        </div>
+
+                        <!-- Project Details -->
+                        <div class="form-group">
+                            <label for="projectDescription">Project Description *</label>
+                            <textarea id="projectDescription" name="projectDescription" rows="4" placeholder="Please describe your project, including specific products, room dimensions, timeline, etc." required></textarea>
+                        </div>
+
+                        <!-- Budget Range -->
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range</option>
+                                <option value="under-500">Under $500</option>
+                                <option value="500-1000">$500 - $1,000</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="over-10000">Over $10,000</option>
+                            </select>
+                        </div>
+
+                        <!-- Timeline -->
+                        <div class="form-group">
+                            <label for="timeline">Preferred Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Select timeline</option>
+                                <option value="asap">ASAP</option>
+                                <option value="1-2-weeks">1-2 weeks</option>
+                                <option value="1-month">Within 1 month</option>
+                                <option value="2-3-months">2-3 months</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="form-group">
+                            <label for="files">Upload Files (Optional)</label>
+                            <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.doc,.docx">
+                            <small>Upload room photos, floor plans, or inspiration images (Max 5MB per file)</small>
+                        </div>
+
+                        <!-- Additional Services -->
+                        <div class="form-group">
+                            <label>Additional Services (Check all that apply)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="additionalServices" value="delivery">
+                                    <span class="checkmark"></span>
+                                    Delivery Service
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="additionalServices" value="installation">
+                                    <span class="checkmark"></span>
+                                    Installation Service
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="additionalServices" value="assembly">
+                                    <span class="checkmark"></span>
+                                    Assembly Service
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="additionalServices" value="removal">
+                                    <span class="checkmark"></span>
+                                    Old Furniture Removal
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Preferred Contact Method -->
+                        <div class="form-group">
+                            <label>Preferred Contact Method</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="contactMethod" value="email" checked>
+                                    <span class="radio-mark"></span>
+                                    Email
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="contactMethod" value="phone">
+                                    <span class="radio-mark"></span>
+                                    Phone Call
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="contactMethod" value="text">
+                                    <span class="radio-mark"></span>
+                                    Text Message
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Quote Request
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Quote Info -->
+                <div class="quote-info">
+                    <h3>What Happens Next?</h3>
+                    <div class="info-steps">
+                        <div class="info-step">
+                            <div class="step-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="step-content">
+                                <h4>Quick Response</h4>
+                                <p>We'll review your request and respond within 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="info-step">
+                            <div class="step-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="step-content">
+                                <h4>Detailed Quote</h4>
+                                <p>Receive a comprehensive quote with transparent pricing</p>
+                            </div>
+                        </div>
+                        <div class="info-step">
+                            <div class="step-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="step-content">
+                                <h4>Consultation</h4>
+                                <p>Schedule a consultation to discuss your project in detail</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <h4>Need Help?</h4>
+                        <p><i class="fas fa-phone"></i> Call us: (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> Email: quotes@luxliving.com</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>LuxLiving</h3>
+                <p>Creating beautiful spaces with premium furniture since 2010.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html#delivery">Delivery & Installation</a></li>
+                    <li><a href="services.html#assembly">Assembly Services</a></li>
+                    <li><a href="services.html#interior-design">Interior Design</a></li>
+                    <li><a href="services.html#custom-furniture">Custom Furniture</a></li>
+                    <li><a href="quote.html">Request Quote</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LuxLiving. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Quote form handling
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            alert('Thank you for your quote request! We will contact you within 24 hours.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Auto-select service type from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const service = urlParams.get('service');
+        if (service) {
+            document.getElementById('serviceType').value = service;
+        }
+    </script>
+    
+    <style>
+        .quote-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .quote-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote-form-section {
+            padding: 5rem 0;
+            background: var(--light-color);
+        }
+
+        .quote-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .quote-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            outline: none;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group small {
+            color: var(--gray-color);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-label,
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .checkbox-label input,
+        .radio-label input {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .quote-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        .quote-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .info-steps {
+            margin-bottom: 2rem;
+        }
+
+        .info-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .contact-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--gray-color);
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .quote-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .quote-form {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-group,
+            .radio-group {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</body>
+</html>

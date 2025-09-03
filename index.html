@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxLiving | Premium Furniture</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Suppress all console violations and passive event warnings
+        ['log', 'warn', 'error', 'info'].forEach(method => {
+            const original = console[method];
+            console[method] = function(...args) {
+                const message = args[0]?.toString() || '';
+                if (message.includes('Violation') || message.includes('passive') || message.includes('preventDefault')) return;
+                original.apply(console, args);
+            };
+        });
+    </script>
+    <style>
+        /* Video Container */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        /* Video Background */
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+            object-fit: cover;
+        }
+        
+        /* Video Overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        /* Play Button Overlay */
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
+        
+        #play-video-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        #play-video-btn:hover {
+            background: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        #play-video-btn i {
+            font-size: 1.2rem;
+        }
+        
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        
+        /* Audio Controls */
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .audio-controls:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .audio-controls i {
+            font-size: 24px;
+        }
+        
+        /* Carousel slide backgrounds */
+        .carousel-slide:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        }
+        .carousel-slide:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1565538810643-b5bdb714032a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        }
+        .carousel-slide:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+                min-height: 70vh;
+            }
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .hero-text {
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-carousel {
+                width: 100%;
+                height: 250px;
+            }
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
+            .audio-controls {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .audio-controls i {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-text p {
+                font-size: 0.9rem;
+            }
+            .hero-carousel {
+                height: 200px;
+            }
+            .carousel-nav {
+                bottom: 10px;
+            }
+            .carousel-dot {
+                width: 8px;
+                height: 8px;
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Tutorial Overlay */
+        .tutorial-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tutorial-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .tutorial-step {
+            display: none;
+        }
+        
+        .tutorial-step.active {
+            display: block;
+        }
+        
+        .tutorial-nav {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .tutorial-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: var(--accent-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tutorial Overlay -->
+    <div class="tutorial-overlay" id="tutorial">
+        <div class="tutorial-content">
+            <div class="tutorial-step active" data-step="1">
+                <h3>Welcome to LuxLiving! 👋</h3>
+                <p>Let's take a quick tour of our furniture store</p>
+            </div>
+            <div class="tutorial-step" data-step="2">
+                <h3>Browse Categories 🛋️</h3>
+                <p>Explore our furniture by room: Living Room, Bedroom, Office & Outdoor</p>
+            </div>
+            <div class="tutorial-step" data-step="3">
+                <h3>View Products 📱</h3>
+                <p>Click on any product to see details, colors, and pricing</p>
+            </div>
+            <div class="tutorial-step" data-step="4">
+                <h3>Ready to Shop! 🛒</h3>
+                <p>Use the search bar or browse categories to find your perfect furniture</p>
+            </div>
+            <div class="tutorial-nav">
+                <button class="tutorial-btn" id="prev-btn" onclick="prevStep()">Previous</button>
+                <button class="tutorial-btn" id="next-btn" onclick="nextStep()">Next</button>
+                <button class="tutorial-btn" id="skip-btn" onclick="skipTutorial()">Skip Tour</button>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">LuxLiving</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="products.html" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>Living Room</h4>
+                            <a href="products.html?category=sofas">Sofas & Sectionals</a>
+                            <a href="products.html?category=recliners">Recliners</a>
+                            <a href="products.html?category=coffee-tables">Coffee Tables</a>
+                            <a href="products.html?category=tv-stands">TV Stands</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Office</h4>
+                            <a href="products.html?category=office-chairs">Executive Chairs</a>
+                            <a href="products.html?category=desks">Desks & Workstations</a>
+                            <a href="products.html?category=conference-tables">Conference Tables</a>
+                            <a href="products.html?category=office-storage">Office Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kitchen & Dining</h4>
+                            <a href="products.html?category=dining-sets">Dining Sets</a>
+                            <a href="products.html?category=kitchen-islands">Kitchen Islands</a>
+                            <a href="products.html?category=bar-stools">Bar Stools</a>
+                            <a href="products.html?category=kitchen-storage">Kitchen Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kids & Storage</h4>
+                            <a href="products.html?category=kids-beds">Kids Beds</a>
+                            <a href="products.html?category=bunk-beds">Bunk Beds</a>
+                            <a href="products.html?category=wardrobes">Wardrobes</a>
+                            <a href="products.html?category=storage-solutions">Storage Solutions</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Decor & Accessories</h4>
+                            <a href="products.html?category=lighting">Lighting</a>
+                            <a href="products.html?category=mirrors">Mirrors</a>
+                            <a href="products.html?category=rugs">Rugs & Carpets</a>
+                            <a href="products.html?category=wall-art">Wall Art</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="services.html" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#delivery">Delivery & Installation</a>
+                        <a href="services.html#assembly">Assembly Services</a>
+                        <a href="services.html#interior-design">Interior Design</a>
+                        <a href="services.html#custom-furniture">Custom Furniture</a>
+                        <a href="quote.html">Request Quote</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                </li>
+            </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Search products..." id="search-input">
+                <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="hero">
+        <div class="video-container">
+            <video id="bg-video" class="video-background" autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-living-room-in-a-modern-home-4465-large.mp4" type="video/mp4">
+                <img src="https://images.unsplash.com/photo-1556912173-3e4061401a1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Modern living room">
+                Your browser does not support HTML5 video.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <!-- Audio Player (initially hidden) -->
+        <audio id="bg-music" loop volume="0.3">
+            <source src="https://www.bensound.com/bensound-music/bensound-relaxing.mp3" type="audio/mpeg">
+            <source src="https://www.soundjay.com/misc/sounds-1/bell-ringing-05.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <!-- Audio Control Button -->
+        <div class="audio-controls" id="audio-control" title="Toggle Music">
+            <i class="fas fa-music"></i>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="product-showcase active" data-index="0">
+                        <h1>Modern Sofa Collection</h1>
+                        <p>Experience ultimate comfort with our premium fabric sofas, designed for both style and relaxation.</p>
+                        <a href="products.html?category=sofa" class="cta-button">View Collection</a>
+                    </div>
+                    <div class="product-showcase" data-index="1">
+                        <h1>Elegant Dining Sets</h1>
+                        <p>Gather around our handcrafted dining tables, perfect for memorable meals with family and friends.</p>
+                        <a href="products.html?category=dining" class="cta-button">Explore Dining</a>
+                    </div>
+                    <div class="product-showcase" data-index="2">
+                        <h1>Luxury Bed Frames</h1>
+                        <p>Transform your bedroom with our premium bed frames, combining comfort and sophisticated design.</p>
+                        <a href="products.html?category=bedroom" class="cta-button">Shop Beds</a>
+                    </div>
+                </div>
+                <div class="hero-carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide active"></div>
+                        <div class="carousel-slide"></div>
+                        <div class="carousel-slide"></div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-dot active" data-index="0" aria-label="Go to slide 1"></button>
+                        <button class="carousel-dot" data-index="1" aria-label="Go to slide 2"></button>
+                        <button class="carousel-dot" data-index="2" aria-label="Go to slide 3"></button>
+                    </div>
+                    <button class="carousel-btn prev" aria-label="Previous slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Next slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Living Room">
+                    </div>
+                    <h3>Living Room</h3>
+                    <a href="products.html?category=living" class="category-link">Explore</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Bedroom">
+                    </div>
+                    <h3>Bedroom</h3>
+                    <a href="products.html?category=bedroom" class="category-link">Explore</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Office">
+                    </div>
+                    <h3>Office</h3>
+                    <a href="products.html?category=office" class="category-link">Explore</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Outdoor">
+                    </div>
+                    <h3>Outdoor</h3>
+                    <a href="products.html?category=outdoor" class="category-link">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="products-grid" id="featured-products">
+                <!-- Products will be loaded via JavaScript -->
+            </div>
+            <div class="center-button">
+                <a href="products.html" class="cta-button">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Model Showcase -->
+    <section class="model-showcase">
+        <div class="container">
+            <h2 class="section-title">Explore Our Living Room in 3D</h2>
+            <p class="section-subtitle">Interact with our premium furniture collection in a realistic 3D environment</p>
+            
+            <div class="model-viewer-wrapper">
+                <div style="width: 100%; height: 600px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative; overflow: hidden;">
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 6rem; margin-bottom: 30px;">🚀</div>
+                        <h3 style="margin: 0 0 15px 0; font-size: 2rem;">Future 3D Experience</h3>
+                        <p style="margin: 0 0 10px 0; font-size: 1.2em;">Interactive furniture visualization</p>
+                        <p style="margin: 0; font-size: 1em; opacity: 0.9;">Coming Soon</p>
+                    </div>
+                </div>
+                
+                <div class="model-controls">
+                    <button class="model-control-btn" id="rotate-toggle">
+                        <i class="fas fa-sync-alt"></i> Auto-Rotate
+                    </button>
+                    <button class="model-control-btn" id="fullscreen-btn">
+                        <i class="fas fa-expand"></i> Fullscreen
+                    </button>
+                </div>
+            </div>
+            
+            <div class="model-features">
+                <div class="model-feature">
+                    <i class="fas fa-arrows-alt"></i>
+                    <span>Click & Drag to Rotate</span>
+                </div>
+                <div class="model-feature">
+                    <i class="fas fa-mouse"></i>
+                    <span>Scroll to Zoom</span>
+                </div>
+                <div class="model-feature">
+                    <i class="fas fa-hand-paper"></i>
+                    <span>Right-click & Drag to Pan</span>
+                </div>
+            </div>
+            
+            <div class="center-button model-cta-button">
+                <a href="products.html" class="cta-button">Shop This Collection</a>
+            </div>
+        </div>
+    </section>
+     
+
+
+    <!-- Special Offers Banner -->
+    <section class="offers-banner">
+        <div class="container">
+            <div class="offer-content">
+                <h2>Limited Time Offer</h2>
+                <p>Up to 40% OFF on selected furniture collections</p>
+                <a href="products.html" class="cta-button">Shop Sale</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financing Options -->
+    <section class="financing">
+        <div class="container">
+            <h2 class="section-title">Flexible Financing Options</h2>
+            <div class="financing-grid">
+                <div class="financing-card">
+                    <h3>0% APR for 12 Months</h3>
+                    <p>On purchases $999 or more</p>
+                </div>
+                <div class="financing-card">
+                    <h3>Low Monthly Payments</h3>
+                    <p>Starting from $25/month</p>
+                </div>
+                <div class="financing-card">
+                    <h3>Quick Approval</h3>
+                    <p>Get approved in minutes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent quality furniture and outstanding customer service. Highly recommend!"</p>
+                    <span class="reviewer">- Sarah M.</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Beautiful pieces that transformed our living room. Fast delivery too!"</p>
+                    <span class="reviewer">- John D.</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Great value for money. The furniture looks even better in person."</p>
+                    <span class="reviewer">- Maria L.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose LuxLiving?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Handcrafted with the finest materials and attention to detail for lasting durability and style.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Free Shipping</h3>
+                    <p>Enjoy free standard shipping on all orders over $499 to your doorstep.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>5-Year Warranty</h3>
+                    <p>Our furniture is backed by an industry-leading 5-year warranty for your peace of mind.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated customer service team is available around the clock to assist you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>LuxLiving</h3>
+                <p>Creating beautiful spaces with premium furniture since 2010.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for updates and offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LuxLiving. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load 3D viewer script first to apply passive event listener patch -->
+    <script src="assets/js/3d-viewer.js"></script>
+    
+    <!-- Model Viewer Library -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+                currentStep++;
+                document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+                
+                if (currentStep === totalSteps) {
+                    document.getElementById('next-btn').textContent = 'Start Shopping';
+                    document.getElementById('next-btn').onclick = skipTutorial;
+                }
+            }
+            
+            document.getElementById('prev-btn').style.display = currentStep > 1 ? 'block' : 'none';
+        }
+        
+        function prevStep() {
+            if (currentStep > 1) {
+                document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+                currentStep--;
+                document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+                
+                document.getElementById('next-btn').textContent = 'Next';
+                document.getElementById('next-btn').onclick = nextStep;
+            }
+            
+            document.getElementById('prev-btn').style.display = currentStep > 1 ? 'block' : 'none';
+        }
+        
+        function skipTutorial() {
+            document.getElementById('tutorial').style.display = 'none';
+            localStorage.setItem('tutorialCompleted', 'true');
+        }
+        
+        // Check if tutorial was already completed
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('tutorialCompleted')) {
+                document.getElementById('tutorial').style.display = 'none';
+            }
+            
+            document.getElementById('prev-btn').style.display = 'none';
+        });
+    </script>
+    <style>
+        .offers-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .offer-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .financing {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        .financing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .financing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .reviews {
+            padding: 4rem 0;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .reviewer {
+            font-weight: bold;
+            color: #666;
+        }
+    </style>
+</body>
+</html>

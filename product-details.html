@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | LuxLiving</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+     <!-- Navigation -->
+     <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">LuxLiving</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="products.html" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>Living Room</h4>
+                            <a href="products.html?category=sofas">Sofas & Sectionals</a>
+                            <a href="products.html?category=recliners">Recliners</a>
+                            <a href="products.html?category=coffee-tables">Coffee Tables</a>
+                            <a href="products.html?category=tv-stands">TV Stands</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Office</h4>
+                            <a href="products.html?category=office-chairs">Executive Chairs</a>
+                            <a href="products.html?category=desks">Desks & Workstations</a>
+                            <a href="products.html?category=conference-tables">Conference Tables</a>
+                            <a href="products.html?category=office-storage">Office Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kitchen & Dining</h4>
+                            <a href="products.html?category=dining-sets">Dining Sets</a>
+                            <a href="products.html?category=kitchen-islands">Kitchen Islands</a>
+                            <a href="products.html?category=bar-stools">Bar Stools</a>
+                            <a href="products.html?category=kitchen-storage">Kitchen Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kids & Storage</h4>
+                            <a href="products.html?category=kids-beds">Kids Beds</a>
+                            <a href="products.html?category=bunk-beds">Bunk Beds</a>
+                            <a href="products.html?category=wardrobes">Wardrobes</a>
+                            <a href="products.html?category=storage-solutions">Storage Solutions</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Decor & Accessories</h4>
+                            <a href="products.html?category=lighting">Lighting</a>
+                            <a href="products.html?category=mirrors">Mirrors</a>
+                            <a href="products.html?category=rugs">Rugs & Carpets</a>
+                            <a href="products.html?category=wall-art">Wall Art</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="services.html" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#delivery">Delivery & Installation</a>
+                        <a href="services.html#assembly">Assembly Services</a>
+                        <a href="services.html#interior-design">Interior Design</a>
+                        <a href="services.html#custom-furniture">Custom Furniture</a>
+                        <a href="quote.html">Request Quote</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                </li>
+            </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Search products..." id="search-input">
+                <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Details -->
+    <section class="product-details">
+        <div class="container">
+            <div id="product-details-container">
+                <a href="products.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Products</a>
+                
+                <div class="details-container">
+                    <div class="product-gallery">
+                        <div class="main-image" id="main-image">
+                            <!-- Main image will be loaded via JavaScript -->
+                        </div>
+                        <div class="thumbnails" id="thumbnails">
+                            <!-- Thumbnails will be loaded via JavaScript -->
+                        </div>
+                    </div>
+                    <div class="product-info-details">
+                        <h1 id="product-name"></h1>
+                        <div class="product-price" id="product-price"></div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">(4.8/5 - 127 reviews)</span>
+                        </div>
+                        <p id="product-description"></p>
+                        
+                        <!-- Product Options -->
+                        <div class="product-options">
+                            <div class="option-group">
+                                <label>Color:</label>
+                                <div class="color-options">
+                                    <div class="color-option active" data-color="brown" style="background: #8B4513;"></div>
+                                    <div class="color-option" data-color="black" style="background: #2C2C2C;"></div>
+                                    <div class="color-option" data-color="white" style="background: #F5F5F5;"></div>
+                                </div>
+                            </div>
+                            <div class="option-group">
+                                <label for="quantity">Quantity:</label>
+                                <div class="quantity-selector">
+                                    <button class="qty-btn" onclick="changeQuantity(-1)">-</button>
+                                    <input type="number" id="quantity" value="1" min="1">
+                                    <button class="qty-btn" onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        
+                        <div class="product-specs">
+                            <h3>Specifications</h3>
+                            <div class="spec-item">
+                                <span class="spec-title">Material:</span>
+                                <span id="product-material"></span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-title">Dimensions:</span>
+                                <span id="product-dimensions"></span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-title">Category:</span>
+                                <span id="product-category"></span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-title">Warranty:</span>
+                                <span>5 Years</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-title">Delivery:</span>
+                                <span>Free shipping</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="product-features">
+                            <h3>Key Features</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Premium quality materials</li>
+                                <li><i class="fas fa-check"></i> Handcrafted by skilled artisans</li>
+                                <li><i class="fas fa-check"></i> Eco-friendly manufacturing</li>
+                                <li><i class="fas fa-check"></i> Easy assembly included</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>LuxLiving</h3>
+                <p>Creating beautiful spaces with premium furniture since 2010.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for updates and offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LuxLiving. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        function changeQuantity(change) {
+            const qty = document.getElementById('quantity');
+            const newValue = parseInt(qty.value) + change;
+            if (newValue >= 1) {
+                qty.value = newValue;
+            }
+        }
+        
+        // Color option selection
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <style>
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        .stars {
+            color: #ffd700;
+        }
+        .rating-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .product-options {
+            margin: 2rem 0;
+        }
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .color-options {
+            display: flex;
+            gap: 10px;
+        }
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .color-option.active {
+            border-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .qty-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .qty-btn:hover {
+            background: #f5f5f5;
+        }
+        #quantity {
+            width: 60px;
+            height: 35px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .add-to-cart-btn {
+            flex: 1;
+            padding: 12px 24px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .add-to-cart-btn:hover {
+            background: var(--primary-color);
+        }
+        .wishlist-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--accent-color);
+            background: white;
+            color: var(--accent-color);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .wishlist-btn:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        .product-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .product-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+        .product-features i {
+            color: var(--accent-color);
+        }
+    </style>
+</body>
+</html>

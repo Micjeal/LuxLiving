@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | LuxLiving</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">LuxLiving</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="products.html" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-section">
+                            <h4>Living Room</h4>
+                            <a href="products.html?category=sofas">Sofas & Sectionals</a>
+                            <a href="products.html?category=recliners">Recliners</a>
+                            <a href="products.html?category=coffee-tables">Coffee Tables</a>
+                            <a href="products.html?category=tv-stands">TV Stands</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Office</h4>
+                            <a href="products.html?category=office-chairs">Executive Chairs</a>
+                            <a href="products.html?category=desks">Desks & Workstations</a>
+                            <a href="products.html?category=conference-tables">Conference Tables</a>
+                            <a href="products.html?category=office-storage">Office Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kitchen & Dining</h4>
+                            <a href="products.html?category=dining-sets">Dining Sets</a>
+                            <a href="products.html?category=kitchen-islands">Kitchen Islands</a>
+                            <a href="products.html?category=bar-stools">Bar Stools</a>
+                            <a href="products.html?category=kitchen-storage">Kitchen Storage</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Kids & Storage</h4>
+                            <a href="products.html?category=kids-beds">Kids Beds</a>
+                            <a href="products.html?category=bunk-beds">Bunk Beds</a>
+                            <a href="products.html?category=wardrobes">Wardrobes</a>
+                            <a href="products.html?category=storage-solutions">Storage Solutions</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Decor & Accessories</h4>
+                            <a href="products.html?category=lighting">Lighting</a>
+                            <a href="products.html?category=mirrors">Mirrors</a>
+                            <a href="products.html?category=rugs">Rugs & Carpets</a>
+                            <a href="products.html?category=wall-art">Wall Art</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="services.html" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#delivery">Delivery & Installation</a>
+                        <a href="services.html#assembly">Assembly Services</a>
+                        <a href="services.html#interior-design">Interior Design</a>
+                        <a href="services.html#custom-furniture">Custom Furniture</a>
+                        <a href="quote.html">Request Quote</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="account.html" class="nav-link active"><i class="fas fa-user"></i> Account</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="container">
+            <!-- Login/Register Toggle -->
+            <div class="auth-container" id="authContainer">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="showLogin()">Sign In</button>
+                    <button class="auth-tab" onclick="showRegister()">Create Account</button>
+                </div>
+
+                <!-- Login Form -->
+                <div class="auth-form" id="loginForm">
+                    <h2>Welcome Back</h2>
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="auth-btn">Sign In</button>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div class="auth-form" id="registerForm" style="display: none;">
+                    <h2>Create Your Account</h2>
+                    <form id="registerFormElement">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <input type="email" id="registerEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for updates and offers
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="auth-btn">Create Account</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Account Dashboard (Hidden initially) -->
+            <div class="account-dashboard" id="accountDashboard" style="display: none;">
+                <div class="dashboard-sidebar">
+                    <div class="user-profile">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 id="userName">John Doe</h3>
+                        <p id="userEmail">john.doe@email.com</p>
+                    </div>
+                    <nav class="dashboard-nav">
+                        <a href="#" class="nav-item active" onclick="showSection('overview')">
+                            <i class="fas fa-tachometer-alt"></i> Overview
+                        </a>
+                        <a href="#" class="nav-item" onclick="showSection('orders')">
+                            <i class="fas fa-shopping-bag"></i> My Orders
+                        </a>
+                        <a href="#" class="nav-item" onclick="showSection('quotes')">
+                            <i class="fas fa-file-invoice"></i> My Quotes
+                        </a>
+                        <a href="#" class="nav-item" onclick="showSection('wishlist')">
+                            <i class="fas fa-heart"></i> Wishlist
+                        </a>
+                        <a href="#" class="nav-item" onclick="showSection('addresses')">
+                            <i class="fas fa-map-marker-alt"></i> Addresses
+                        </a>
+                        <a href="#" class="nav-item" onclick="showSection('profile')">
+                            <i class="fas fa-user-edit"></i> Profile Settings
+                        </a>
+                        <a href="#" class="nav-item" onclick="showSection('support')">
+                            <i class="fas fa-headset"></i> Support
+                        </a>
+                        <a href="#" class="nav-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Sign Out
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="dashboard-content">
+                    <!-- Overview Section -->
+                    <div class="content-section active" id="overview">
+                        <h2>Account Overview</h2>
+                        <div class="overview-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>5</h3>
+                                    <p>Total Orders</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-file-invoice"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>2</h3>
+                                    <p>Pending Quotes</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>8</h3>
+                                    <p>Wishlist Items</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-truck"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Order #12345</strong> has been delivered</p>
+                                        <span class="activity-date">2 days ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-file-invoice"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Quote request</strong> for custom dining table submitted</p>
+                                        <span class="activity-date">1 week ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>Added <strong>Modern Sofa Set</strong> to wishlist</p>
+                                        <span class="activity-date">2 weeks ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Section -->
+                    <div class="content-section" id="orders">
+                        <h2>My Orders</h2>
+                        <div class="orders-list">
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <div class="order-info">
+                                        <h4>Order #12345</h4>
+                                        <p>Placed on March 15, 2024</p>
+                                    </div>
+                                    <div class="order-status delivered">
+                                        <i class="fas fa-check-circle"></i>
+                                        Delivered
+                                    </div>
+                                </div>
+                                <div class="order-items">
+                                    <div class="order-item">
+                                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Product">
+                                        <div class="item-details">
+                                            <h5>Modern Sectional Sofa</h5>
+                                            <p>Color: Gray | Quantity: 1</p>
+                                        </div>
+                                        <div class="item-price">$1,299.99</div>
+                                    </div>
+                                </div>
+                                <div class="order-actions">
+                                    <button class="btn-secondary">View Details</button>
+                                    <button class="btn-secondary">Track Order</button>
+                                    <button class="btn-secondary">Leave Review</button>
+                                </div>
+                            </div>
+
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <div class="order-info">
+                                        <h4>Order #12344</h4>
+                                        <p>Placed on March 10, 2024</p>
+                                    </div>
+                                    <div class="order-status processing">
+                                        <i class="fas fa-clock"></i>
+                                        Processing
+                                    </div>
+                                </div>
+                                <div class="order-items">
+                                    <div class="order-item">
+                                        <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Product">
+                                        <div class="item-details">
+                                            <h5>Executive Office Chair</h5>
+                                            <p>Color: Black | Quantity: 2</p>
+                                        </div>
+                                        <div class="item-price">$599.98</div>
+                                    </div>
+                                </div>
+                                <div class="order-actions">
+                                    <button class="btn-secondary">View Details</button>
+                                    <button class="btn-secondary">Track Order</button>
+                                    <button class="btn-danger">Cancel Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other sections would be implemented similarly -->
+                    <div class="content-section" id="quotes">
+                        <h2>My Quotes</h2>
+                        <p>Your quote requests and responses will appear here.</p>
+                    </div>
+
+                    <div class="content-section" id="wishlist">
+                        <h2>My Wishlist</h2>
+                        <p>Save your favorite items for later.</p>
+                    </div>
+
+                    <div class="content-section" id="addresses">
+                        <h2>My Addresses</h2>
+                        <p>Manage your delivery addresses.</p>
+                    </div>
+
+                    <div class="content-section" id="profile">
+                        <h2>Profile Settings</h2>
+                        <p>Update your personal information and preferences.</p>
+                    </div>
+
+                    <div class="content-section" id="support">
+                        <h2>Customer Support</h2>
+                        <div class="support-options">
+                            <div class="support-card">
+                                <h4>Submit a Complaint</h4>
+                                <p>Report any issues with your order or service</p>
+                                <button class="cta-button">Submit Complaint</button>
+                            </div>
+                            <div class="support-card">
+                                <h4>Provide Feedback</h4>
+                                <p>Share your experience to help us improve</p>
+                                <button class="cta-button">Give Feedback</button>
+                            </div>
+                            <div class="support-card">
+                                <h4>Contact Support</h4>
+                                <p>Get help from our customer service team</p>
+                                <button class="cta-button">Contact Us</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>LuxLiving</h3>
+                <p>Creating beautiful spaces with premium furniture since 2010.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="account.html">My Account</a></li>
+                    <li><a href="account.html#orders">Order Tracking</a></li>
+                    <li><a href="account.html#quotes">My Quotes</a></li>
+                    <li><a href="account.html#wishlist">Wishlist</a></li>
+                    <li><a href="account.html#support">Customer Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LuxLiving. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Authentication functions
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+            document.querySelectorAll('.auth-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+            document.querySelectorAll('.auth-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Dashboard functions
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.dashboard-nav .nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function logout() {
+            document.getElementById('accountDashboard').style.display = 'none';
+            document.getElementById('authContainer').style.display = 'block';
+            showLogin();
+        }
+
+        // Form submissions
+        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate login
+            document.getElementById('authContainer').style.display = 'none';
+            document.getElementById('accountDashboard').style.display = 'block';
+        });
+
+        document.getElementById('registerFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate registration
+            alert('Account created successfully! Please sign in.');
+            showLogin();
+        });
+
+        // Check if user is already logged in (simulate)
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (isLoggedIn) {
+            document.getElementById('authContainer').style.display = 'none';
+            document.getElementById('accountDashboard').style.display = 'block';
+        }
+    </script>
+    
+    <style>
+        .account-section {
+            padding: 7rem 0 5rem;
+            background: var(--light-color);
+            min-height: 80vh;
+        }
+
+        /* Authentication Styles */
+        .auth-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .auth-tabs {
+            display: flex;
+            background: var(--light-gray);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .auth-tab.active {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .auth-form {
+            padding: 2rem;
+        }
+
+        .auth-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .forgot-password {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .auth-btn:hover {
+            background: var(--primary-color);
+        }
+
+        /* Dashboard Styles */
+        .account-dashboard {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            height: fit-content;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-profile {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .dashboard-nav .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            color: var(--gray-color);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .dashboard-nav .nav-item:hover,
+        .dashboard-nav .nav-item.active {
+            background: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        .dashboard-nav .nav-item i {
+            margin-right: 1rem;
+            width: 20px;
+        }
+
+        .dashboard-content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .stat-info h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recent-activity h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+        }
+
+        .activity-date {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* Orders Styles */
+        .order-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .order-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .order-status.delivered {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .order-status.processing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .order-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            padding: 0.5rem 1rem;
+            background: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-danger {
+            padding: 0.5rem 1rem;
+            background: #dc3545;
+            color: white;
+            border: 1px solid #dc3545;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .support-card {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .support-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .account-dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-sidebar {
+                order: 2;
+            }
+
+            .dashboard-content {
+                order: 1;
+            }
+
+            .overview-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .order-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>
