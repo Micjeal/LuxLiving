@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniture Blog | LuxLiving</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="elegant-spinner"></div>
+        <div class="loading-text">LuxLiving</div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -79,9 +86,13 @@
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Order Now</a>
                 </li>
             </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Search products..." id="search-input">
+                <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -91,10 +102,10 @@
     </nav>
 
     <!-- Blog Hero -->
-    <section class="blog-hero">
+    <section class="blog-hero scroll-animate">
         <div class="container">
-            <h1>Furniture & Design Blog</h1>
-            <p>Tips, guides, and inspiration for creating beautiful spaces</p>
+            <h1 class="fade-in">Furniture & Design Blog</h1>
+            <p class="slide-in-left">Tips, guides, and inspiration for creating beautiful spaces</p>
         </div>
     </section>
 
@@ -105,7 +116,7 @@
                 <!-- Main Content -->
                 <div class="blog-main">
                     <!-- Featured Post -->
-                    <article class="featured-post">
+                    <article class="featured-post scroll-animate">
                         <div class="post-image">
                             <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Living Room Design">
                             <div class="post-category">Interior Design</div>
@@ -123,7 +134,7 @@
                     </article>
 
                     <!-- Blog Posts Grid -->
-                    <div class="blog-posts">
+                    <div class="blog-posts scroll-animate">
                         <article class="blog-post">
                             <div class="post-image">
                                 <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Furniture Assembly">
@@ -355,6 +366,7 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/animations.js"></script>
     
     <style>
         .blog-hero {
@@ -706,5 +718,9 @@
             }
         }
     </style>
+    <div class="audio-controls" id="audio-control" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </div>
+    
 </body>
 </html>

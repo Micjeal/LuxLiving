@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | LuxLiving</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="elegant-spinner"></div>
+        <div class="loading-text">LuxLiving</div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -79,9 +86,13 @@
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Order Now</a>
                 </li>
             </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Search products..." id="search-input">
+                <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -91,37 +102,37 @@
     </nav>
 
     <!-- Services Hero -->
-    <section class="services-hero">
+    <section class="services-hero scroll-animate">
         <div class="container">
-            <h1>Our Premium Services</h1>
-            <p>Complete furniture solutions from delivery to design consultation</p>
+            <h1 class="fade-in">Our Premium Services</h1>
+            <p class="slide-in-left">Complete furniture solutions from delivery to design consultation</p>
         </div>
     </section>
 
     <!-- Services Grid -->
-    <section class="services-content">
+    <section class="services-content scroll-animate">
         <div class="container">
             <!-- Delivery & Installation -->
-            <div class="service-section" id="delivery">
-                <div class="service-content">
-                    <div class="service-text">
-                        <h2><i class="fas fa-truck"></i> Delivery & Installation</h2>
-                        <p>Professional delivery and installation services to ensure your furniture arrives safely and is set up perfectly in your space.</p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> Free delivery on orders over $499</li>
-                            <li><i class="fas fa-check"></i> White glove delivery service available</li>
-                            <li><i class="fas fa-check"></i> Professional installation team</li>
-                            <li><i class="fas fa-check"></i> Flexible scheduling options</li>
-                            <li><i class="fas fa-check"></i> Damage protection guarantee</li>
-                        </ul>
-                        <div class="service-pricing">
-                            <h4>Pricing:</h4>
-                            <p>Standard Delivery: $49 - $99 | White Glove: $149 - $299</p>
+            <div class="service-section parallax-section" id="delivery" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); margin-bottom: 3rem;">
+                <div class="parallax-bg" data-speed="0.2" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="parallax-content">
+                    <div class="service-content">
+                        <div class="service-text glass-card" style="margin: 2rem;">
+                            <h2 style="color: var(--primary-color);"><i class="fas fa-truck"></i> Delivery & Installation</h2>
+                            <p style="color: var(--dark-color);">Professional delivery and installation services to ensure your furniture arrives safely and is set up perfectly in your space.</p>
+                            <ul class="service-features">
+                                <li style="color: var(--dark-color);"><i class="fas fa-check"></i> Free delivery on orders over $499</li>
+                                <li style="color: var(--dark-color);"><i class="fas fa-check"></i> White glove delivery service available</li>
+                                <li style="color: var(--dark-color);"><i class="fas fa-check"></i> Professional installation team</li>
+                                <li style="color: var(--dark-color);"><i class="fas fa-check"></i> Flexible scheduling options</li>
+                                <li style="color: var(--dark-color);"><i class="fas fa-check"></i> Damage protection guarantee</li>
+                            </ul>
+                            <div class="service-pricing glass-card-dark" style="margin: 1rem 0;">
+                                <h4>Pricing:</h4>
+                                <p>Standard Delivery: $49 - $99 | White Glove: $149 - $299</p>
+                            </div>
+                            <a href="quote.html?service=delivery" class="cta-button">Request Delivery Quote</a>
                         </div>
-                        <a href="quote.html?service=delivery" class="cta-button">Request Delivery Quote</a>
-                    </div>
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Delivery Service">
                     </div>
                 </div>
             </div>
@@ -233,36 +244,39 @@
     </section>
 
     <!-- Service Areas -->
-    <section class="service-areas">
-        <div class="container">
-            <h2 class="section-title">Service Areas</h2>
-            <div class="areas-grid">
-                <div class="area-card">
-                    <h3>Metropolitan Area</h3>
-                    <p>Full service coverage including delivery, installation, and design consultation</p>
-                    <ul>
-                        <li>Same-day delivery available</li>
-                        <li>White glove service</li>
-                        <li>In-home consultations</li>
-                    </ul>
-                </div>
-                <div class="area-card">
-                    <h3>Suburban Areas</h3>
-                    <p>Extended delivery and assembly services to surrounding communities</p>
-                    <ul>
-                        <li>2-3 day delivery</li>
-                        <li>Assembly services</li>
-                        <li>Virtual consultations</li>
-                    </ul>
-                </div>
-                <div class="area-card">
-                    <h3>Remote Areas</h3>
-                    <p>Special delivery arrangements and virtual design services</p>
-                    <ul>
-                        <li>Freight delivery options</li>
-                        <li>Virtual assembly support</li>
-                        <li>Online design tools</li>
-                    </ul>
+    <section class="service-areas parallax-section" style="background-image: linear-gradient(rgba(12,46,96,0.7), rgba(12,46,96,0.7)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+        <div class="parallax-bg" data-speed="0.5" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+        <div class="parallax-content">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Service Areas</h2>
+                <div class="areas-grid">
+                    <div class="area-card glass-card">
+                        <h3 style="color: var(--primary-color);">Metropolitan Area</h3>
+                        <p style="color: var(--dark-color);">Full service coverage including delivery, installation, and design consultation</p>
+                        <ul>
+                            <li style="color: var(--gray-color);">Same-day delivery available</li>
+                            <li style="color: var(--gray-color);">White glove service</li>
+                            <li style="color: var(--gray-color);">In-home consultations</li>
+                        </ul>
+                    </div>
+                    <div class="area-card glass-card">
+                        <h3 style="color: var(--primary-color);">Suburban Areas</h3>
+                        <p style="color: var(--dark-color);">Extended delivery and assembly services to surrounding communities</p>
+                        <ul>
+                            <li style="color: var(--gray-color);">2-3 day delivery</li>
+                            <li style="color: var(--gray-color);">Assembly services</li>
+                            <li style="color: var(--gray-color);">Virtual consultations</li>
+                        </ul>
+                    </div>
+                    <div class="area-card glass-card">
+                        <h3 style="color: var(--primary-color);">Remote Areas</h3>
+                        <p style="color: var(--dark-color);">Special delivery arrangements and virtual design services</p>
+                        <ul>
+                            <li style="color: var(--gray-color);">Freight delivery options</li>
+                            <li style="color: var(--gray-color);">Virtual assembly support</li>
+                            <li style="color: var(--gray-color);">Online design tools</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -310,7 +324,12 @@
         </div>
     </footer>
 
+    <div class="audio-controls" id="audio-control" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </div>
+    
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/animations.js"></script>
     
     <style>
         .services-hero {

@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products | LuxLiving</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="elegant-spinner"></div>
+        <div class="loading-text">LuxLiving</div>
+    </div>
+
       <!-- Navigation -->
       <nav class="navbar">
         <div class="nav-container">
@@ -79,7 +86,7 @@
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Order Now</a>
                 </li>
             </ul>
             <div class="nav-search">
@@ -95,13 +102,13 @@
     </nav>
 
     <!-- Products Header -->
-    <section class="hero products-hero">
+    <section class="hero products-hero scroll-animate">
         <div class="hero-content">
-            <div class="breadcrumb">
+            <div class="breadcrumb fade-in">
                 <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Products</span>
             </div>
-            <h1>Our Premium Collection</h1>
-            <p>Discover furniture that combines elegance, comfort, and functionality</p>
+            <h1 class="slide-in-left">Our Premium Collection</h1>
+            <p class="slide-in-right">Discover furniture that combines elegance, comfort, and functionality</p>
             <div class="hero-stats">
                 <div class="stat">
                     <span class="number">500+</span>
@@ -164,9 +171,9 @@
     </section>
 
     <!-- Products Grid -->
-    <section class="featured-products">
+    <section class="featured-products scroll-animate">
         <div class="container">
-            <div class="products-grid" id="all-products">
+            <div class="products-grid scroll-animate" id="all-products">
                 <!-- Products will be loaded via JavaScript -->
             </div>
         </div>
@@ -211,7 +218,12 @@
         </div>
     </footer>
 
+    <div class="audio-controls" id="audio-control" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </div>
+    
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/animations.js"></script>
     <style>
         .filter-stats {
             display: flex;
@@ -469,7 +481,9 @@
                 ${badge}
                 <button class="wishlist-icon"><i class="far fa-heart"></i></button>
                 <div class="product-img">
-                    <img src="${product.images[0]}" alt="${product.name}">
+                    <a href="product-details.html?id=${product.id}">
+                        <img src="${product.images[0]}" alt="${product.name}">
+                    </a>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">${product.name}</h3>

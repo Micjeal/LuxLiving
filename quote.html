@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Quote | LuxLiving</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="elegant-spinner"></div>
+        <div class="loading-text">LuxLiving</div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -78,10 +85,12 @@
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
-                </li>
+
             </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Search products..." id="search-input">
+                <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -91,17 +100,17 @@
     </nav>
 
     <!-- Quote Hero -->
-    <section class="quote-hero">
+    <section class="quote-hero scroll-animate">
         <div class="container">
-            <h1>Request a Quote</h1>
-            <p>Get personalized pricing for our products and services</p>
+            <h1 class="fade-in">Request a Quote</h1>
+            <p class="slide-in-left">Get personalized pricing for our products and services</p>
         </div>
     </section>
 
     <!-- Quote Form -->
-    <section class="quote-form-section">
+    <section class="quote-form-section scroll-animate">
         <div class="container">
-            <div class="quote-container">
+            <div class="quote-container scroll-animate">
                 <div class="quote-form">
                     <h2>Tell Us About Your Project</h2>
                     <form id="quoteForm">
@@ -343,6 +352,7 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/animations.js"></script>
     <script>
         // Quote form handling
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
@@ -590,5 +600,9 @@
             }
         }
     </style>
+    <div class="audio-controls" id="audio-control" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </div>
+    
 </body>
 </html>

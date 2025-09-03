@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | LuxLiving</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="elegant-spinner"></div>
+        <div class="loading-text">LuxLiving</div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -79,7 +86,7 @@
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Order Now</a>
                 </li>
             </ul>
             <div class="nav-search">
@@ -95,17 +102,17 @@
     </nav>
 
     <!-- About Hero -->
-    <section class="about-hero">
+    <section class="about-hero scroll-animate">
         <div class="hero-content">
-            <h1>Our Story</h1>
-            <p>Discover the passion behind LuxLiving</p>
+            <h1 class="fade-in">Our Story</h1>
+            <p class="slide-in-left">Discover the passion behind LuxLiving</p>
         </div>
     </section>
 
     <!-- About Content -->
-    <section class="about-content">
+    <section class="about-content scroll-animate">
         <div class="container">
-            <div class="about-text">
+            <div class="about-text scroll-animate">
                 <h2>Designing Spaces, Creating Experiences</h2>
                 <p>Founded in 2010, LuxLiving began with a simple mission: to create beautiful, high-quality furniture that transforms houses into homes. Our journey started in a small workshop where our founder, Sarah Johnson, crafted her first piece—a custom dining table that combined functionality with elegant design.</p>
                 <p>Today, we've grown into a premium furniture brand known for our attention to detail, sustainable practices, and commitment to customer satisfaction. Each piece in our collection is thoughtfully designed to bring comfort, style, and functionality to your living spaces.</p>
@@ -171,5 +178,10 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <div class="audio-controls" id="audio-control" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </div>
+    
 </body>
 </html>

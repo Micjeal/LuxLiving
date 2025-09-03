@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LuxLiving | Premium Furniture</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -208,9 +209,67 @@
             }
         }
         
-        /* Smooth Scroll */
+        /* Smooth Scroll & Animations */
         html {
             scroll-behavior: smooth;
+        }
+        
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Parallax Effect */
+        .parallax {
+            transform: translateY(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Pulse Effect */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Enhanced Hover Effects */
+        .category-card {
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
         }
         
         /* Tutorial Overlay */
@@ -261,6 +320,12 @@
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="elegant-spinner"></div>
+        <div class="loading-text">LuxLiving</div>
+    </div>
+
     <!-- Tutorial Overlay -->
     <div class="tutorial-overlay" id="tutorial">
         <div class="tutorial-content">
@@ -357,7 +422,7 @@
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Order Now</a>
                 </li>
             </ul>
             <div class="nav-search">
@@ -397,7 +462,7 @@
         
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text scroll-animate">
                     <div class="product-showcase active" data-index="0">
                         <h1>Modern Sofa Collection</h1>
                         <p>Experience ultimate comfort with our premium fabric sofas, designed for both style and relaxation.</p>
@@ -414,7 +479,7 @@
                         <a href="products.html?category=bedroom" class="cta-button">Shop Beds</a>
                     </div>
                 </div>
-                <div class="hero-carousel">
+                <div class="hero-carousel scroll-animate float-animation">
                     <div class="carousel-track">
                         <div class="carousel-slide active"></div>
                         <div class="carousel-slide"></div>
@@ -437,32 +502,32 @@
     </section>
 
     <!-- Featured Categories -->
-    <section class="categories">
+    <section class="categories scroll-animate">
         <div class="container">
-            <h2 class="section-title">Shop By Category</h2>
-            <div class="category-grid">
-                <div class="category-card">
+            <h2 class="section-title scroll-animate">Shop By Category</h2>
+            <div class="category-grid scroll-animate">
+                <div class="category-card float-animation">
                     <div class="category-img">
                         <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Living Room">
                     </div>
                     <h3>Living Room</h3>
                     <a href="products.html?category=living" class="category-link">Explore</a>
                 </div>
-                <div class="category-card">
+                <div class="category-card float-animation" style="animation-delay: 0.2s;">
                     <div class="category-img">
                         <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Bedroom">
                     </div>
                     <h3>Bedroom</h3>
                     <a href="products.html?category=bedroom" class="category-link">Explore</a>
                 </div>
-                <div class="category-card">
+                <div class="category-card float-animation" style="animation-delay: 0.4s;">
                     <div class="category-img">
                         <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Office">
                     </div>
                     <h3>Office</h3>
                     <a href="products.html?category=office" class="category-link">Explore</a>
                 </div>
-                <div class="category-card">
+                <div class="category-card float-animation" style="animation-delay: 0.6s;">
                     <div class="category-img">
                         <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Outdoor">
                     </div>
@@ -474,61 +539,53 @@
     </section>
 
     <!-- Featured Products -->
-    <section class="featured-products">
+    <section class="featured-products scroll-animate">
         <div class="container">
-            <h2 class="section-title">Featured Collection</h2>
-            <div class="products-grid" id="featured-products">
+            <h2 class="section-title scroll-animate">Featured Collection</h2>
+            <div class="products-grid scroll-animate" id="featured-products">
                 <!-- Products will be loaded via JavaScript -->
             </div>
-            <div class="center-button">
-                <a href="products.html" class="cta-button">View All Products</a>
+            <div class="center-button scroll-animate">
+                <a href="products.html" class="cta-button pulse-animation">View All Products</a>
             </div>
         </div>
     </section>
 
     <!-- 3D Model Showcase -->
-    <section class="model-showcase">
-        <div class="container">
-            <h2 class="section-title">Explore Our Living Room in 3D</h2>
-            <p class="section-subtitle">Interact with our premium furniture collection in a realistic 3D environment</p>
-            
-            <div class="model-viewer-wrapper">
-                <div style="width: 100%; height: 600px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative; overflow: hidden;">
+    <section class="model-showcase parallax-section" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+        <div class="parallax-bg" data-speed="0.2" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+        <div class="parallax-content">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Explore Our Living Room in 3D</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Interact with our premium furniture collection in a realistic 3D environment</p>
+                
+                <div class="model-viewer-wrapper glass-card-dark" style="padding: 3rem; margin: 2rem 0;">
                     <div style="text-align: center; color: white;">
-                        <div style="font-size: 6rem; margin-bottom: 30px;">🚀</div>
+                        <div style="font-size: 4rem; margin-bottom: 20px;">🚀</div>
                         <h3 style="margin: 0 0 15px 0; font-size: 2rem;">Future 3D Experience</h3>
                         <p style="margin: 0 0 10px 0; font-size: 1.2em;">Interactive furniture visualization</p>
                         <p style="margin: 0; font-size: 1em; opacity: 0.9;">Coming Soon</p>
                     </div>
                 </div>
                 
-                <div class="model-controls">
-                    <button class="model-control-btn" id="rotate-toggle">
-                        <i class="fas fa-sync-alt"></i> Auto-Rotate
-                    </button>
-                    <button class="model-control-btn" id="fullscreen-btn">
-                        <i class="fas fa-expand"></i> Fullscreen
-                    </button>
+                <div class="model-features" style="justify-content: center; color: white;">
+                    <div class="model-feature glass-card" style="padding: 1rem; margin: 0.5rem;">
+                        <i class="fas fa-arrows-alt"></i>
+                        <span>Click & Drag to Rotate</span>
+                    </div>
+                    <div class="model-feature glass-card" style="padding: 1rem; margin: 0.5rem;">
+                        <i class="fas fa-mouse"></i>
+                        <span>Scroll to Zoom</span>
+                    </div>
+                    <div class="model-feature glass-card" style="padding: 1rem; margin: 0.5rem;">
+                        <i class="fas fa-hand-paper"></i>
+                        <span>Right-click & Drag to Pan</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="model-features">
-                <div class="model-feature">
-                    <i class="fas fa-arrows-alt"></i>
-                    <span>Click & Drag to Rotate</span>
+                
+                <div class="center-button model-cta-button">
+                    <a href="products.html" class="cta-button">Shop This Collection</a>
                 </div>
-                <div class="model-feature">
-                    <i class="fas fa-mouse"></i>
-                    <span>Scroll to Zoom</span>
-                </div>
-                <div class="model-feature">
-                    <i class="fas fa-hand-paper"></i>
-                    <span>Right-click & Drag to Pan</span>
-                </div>
-            </div>
-            
-            <div class="center-button model-cta-button">
-                <a href="products.html" class="cta-button">Shop This Collection</a>
             </div>
         </div>
     </section>
@@ -568,61 +625,67 @@
     </section>
 
     <!-- Customer Reviews -->
-    <section class="reviews">
-        <div class="container">
-            <h2 class="section-title">What Our Customers Say</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Excellent quality furniture and outstanding customer service. Highly recommend!"</p>
-                    <span class="reviewer">- Sarah M.</span>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Beautiful pieces that transformed our living room. Fast delivery too!"</p>
-                    <span class="reviewer">- John D.</span>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Great value for money. The furniture looks even better in person."</p>
-                    <span class="reviewer">- Maria L.</span>
+    <section class="reviews parallax-section" style="background-image: linear-gradient(rgba(12,46,96,0.8), rgba(12,46,96,0.8)), url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+        <div class="parallax-bg" data-speed="0.4" style="background-image: url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+        <div class="parallax-content">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">What Our Customers Say</h2>
+                <div class="reviews-grid">
+                    <div class="review-card glass-card">
+                        <div class="stars" style="color: var(--accent-color);">★★★★★</div>
+                        <p style="color: var(--dark-color);">"Excellent quality furniture and outstanding customer service. Highly recommend!"</p>
+                        <span class="reviewer" style="color: var(--primary-color);">- Sarah M.</span>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars" style="color: var(--accent-color);">★★★★★</div>
+                        <p style="color: var(--dark-color);">"Beautiful pieces that transformed our living room. Fast delivery too!"</p>
+                        <span class="reviewer" style="color: var(--primary-color);">- John D.</span>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars" style="color: var(--accent-color);">★★★★★</div>
+                        <p style="color: var(--dark-color);">"Great value for money. The furniture looks even better in person."</p>
+                        <span class="reviewer" style="color: var(--primary-color);">- Maria L.</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="why-choose-us">
-        <div class="container">
-            <h2 class="section-title">Why Choose LuxLiving?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-award"></i>
+    <section class="why-choose-us parallax-section scroll-animate" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+        <div class="parallax-bg" data-speed="0.3" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+        <div class="parallax-content">
+            <div class="container">
+                <h2 class="section-title scroll-animate" style="color: white;">Why Choose LuxLiving?</h2>
+                <div class="features-grid scroll-animate">
+                    <div class="feature-card glass-card-dark">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>Handcrafted with the finest materials and attention to detail for lasting durability and style.</p>
                     </div>
-                    <h3>Premium Quality</h3>
-                    <p>Handcrafted with the finest materials and attention to detail for lasting durability and style.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-truck"></i>
+                    <div class="feature-card glass-card-dark">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Free Shipping</h3>
+                        <p>Enjoy free standard shipping on all orders over $499 to your doorstep.</p>
                     </div>
-                    <h3>Free Shipping</h3>
-                    <p>Enjoy free standard shipping on all orders over $499 to your doorstep.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                    <div class="feature-card glass-card-dark">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>5-Year Warranty</h3>
+                        <p>Our furniture is backed by an industry-leading 5-year warranty for your peace of mind.</p>
                     </div>
-                    <h3>5-Year Warranty</h3>
-                    <p>Our furniture is backed by an industry-leading 5-year warranty for your peace of mind.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
+                    <div class="feature-card glass-card-dark">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Our dedicated customer service team is available around the clock to assist you.</p>
                     </div>
-                    <h3>24/7 Support</h3>
-                    <p>Our dedicated customer service team is available around the clock to assist you.</p>
                 </div>
             </div>
         </div>
@@ -719,7 +782,39 @@
             }
             
             document.getElementById('prev-btn').style.display = 'none';
+            
+            // Initialize scroll animations
+            initScrollAnimations();
+            initParallaxEffect();
         });
+        
+        // Scroll Animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Parallax Effect
+        function initParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax');
+                
+                parallaxElements.forEach(element => {
+                    const speed = element.dataset.speed || 0.5;
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        }
     </script>
     <style>
         .offers-banner {

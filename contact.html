@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | LuxLiving</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="elegant-spinner"></div>
+        <div class="loading-text">LuxLiving</div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -79,7 +86,7 @@
                     <a href="contact.html" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="account.html" class="nav-link"><i class="fas fa-user"></i> Account</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-phone"></i> Order Now</a>
                 </li>
             </ul>
             <div class="nav-search">
@@ -95,55 +102,55 @@
     </nav>
 
     <!-- Contact Hero -->
-    <section class="contact-hero">
+    <section class="contact-hero scroll-animate">
         <div class="hero-content">
-            <h1>Get In Touch</h1>
-            <p>We'd love to hear from you</p>
+            <h1 class="fade-in">Order Your Furniture</h1>
+            <p class="slide-in-left">Contact us through your preferred platform to place an order</p>
         </div>
     </section>
 
     <!-- Contact Content -->
     <section class="contact-content">
         <div class="container">
-            <!-- Contact Methods -->
-            <div class="contact-methods">
+            <!-- Order Methods -->
+            <div class="contact-methods scroll-animate">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Order</h3>
+                    <p>+1 (555) 123-4567</p>
+                    <a href="https://wa.me/15551234567" class="cta-button">Order via WhatsApp</a>
+                </div>
                 <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
-                    <h3>Call Us</h3>
+                    <h3>Call to Order</h3>
                     <p>+1 (555) 123-4567</p>
-                    <p>Mon-Fri: 9am-6pm</p>
+                    <a href="tel:+15551234567" class="cta-button">Call Now</a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Email Us</h3>
-                    <p>info@luxliving.com</p>
-                    <p>We reply within 24 hours</p>
+                    <h3>Email Order</h3>
+                    <p>orders@luxliving.com</p>
+                    <a href="mailto:orders@luxliving.com" class="cta-button">Send Email</a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fab fa-telegram"></i>
                     </div>
-                    <h3>Visit Us</h3>
-                    <p>123 Design Street</p>
-                    <p>New York, NY 10001</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Live Chat</h3>
-                    <p>Available 24/7</p>
-                    <p>Instant support</p>
+                    <h3>Telegram</h3>
+                    <p>@LuxLivingOrders</p>
+                    <a href="https://t.me/LuxLivingOrders" class="cta-button">Order via Telegram</a>
                 </div>
             </div>
             
-            <div class="contact-container">
+            <div class="contact-container scroll-animate">
                 <div class="contact-form">
-                    <h2>Send Us a Message</h2>
+                    <h2>Send Order Inquiry</h2>
                     <form id="contact-form">
                         <div class="form-row">
                             <div class="form-group">
@@ -164,10 +171,10 @@
                                 <label for="subject">Subject</label>
                                 <select id="subject" name="subject" required>
                                     <option value="">Select a subject</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="product">Product Question</option>
-                                    <option value="order">Order Support</option>
-                                    <option value="custom">Custom Design</option>
+                                    <option value="order">Place Order</option>
+                                    <option value="quote">Request Quote</option>
+                                    <option value="custom">Custom Furniture</option>
+                                    <option value="bulk">Bulk Order</option>
                                 </select>
                             </div>
                         </div>
@@ -175,7 +182,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn">Send Order Inquiry</button>
                     </form>
                 </div>
                 
@@ -256,6 +263,7 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/animations.js"></script>
     <style>
         .contact-methods {
             display: grid;
@@ -328,5 +336,9 @@
             }
         }
     </style>
+    <div class="audio-controls" id="audio-control" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </div>
+    
 </body>
 </html>

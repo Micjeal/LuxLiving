@@ -93,6 +93,51 @@ const products = [
   // Add more products to reach 20-30 items
 ];
 
+// Loading Screen
+window.addEventListener('load', function() {
+  const loadingScreen = document.getElementById('loadingScreen');
+  if (loadingScreen) {
+    setTimeout(() => {
+      loadingScreen.classList.add('fade-out');
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    }, 1000);
+  }
+});
+
+// Back to Top Button
+const backToTopBtn = document.createElement('button');
+backToTopBtn.className = 'back-to-top';
+backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+backToTopBtn.setAttribute('aria-label', 'Back to top');
+document.body.appendChild(backToTopBtn);
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    backToTopBtn.classList.add('show');
+  } else {
+    backToTopBtn.classList.remove('show');
+  }
+});
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+
+// Parallax Effect
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const parallaxElements = document.querySelectorAll('.parallax-bg');
+  
+  parallaxElements.forEach(element => {
+    const speed = element.dataset.speed || 0.5;
+    element.style.transform = `translateY(${scrolled * speed}px)`;
+  });
+});
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile Menu Toggle
@@ -130,10 +175,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Load all products on products page
   if (document.getElementById('all-products')) {
-      loadAllProducts();
+      handleProductsPageLoad();
       setupFiltering();
       setupSearch();
   }
+  
+  // Setup search on all pages
+  setupSearch();
   
   // Load product details if on product details page
   if (document.getElementById('product-details-container')) {
@@ -181,15 +229,53 @@ function loadFeaturedProducts() {
   });
 }
 
+// Handle Products Page Load
+function handleProductsPageLoad() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchTerm = urlParams.get('search');
+  const category = urlParams.get('category');
+  
+  let productsToShow = products;
+  
+  // Apply search filter if search term exists
+  if (searchTerm) {
+      const desktopInput = document.getElementById('search-input');
+      const mobileInput = document.getElementById('mobile-search-input');
+      if (desktopInput) desktopInput.value = searchTerm;
+      if (mobileInput) mobileInput.value = searchTerm;
+      
+      productsToShow = products.filter(product => 
+          product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+          product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  }
+  
+  // Apply category filter if category exists
+  if (category && !searchTerm) {
+      productsToShow = products.filter(product => product.category === category);
+      // Activate the corresponding filter button
+      const filterBtn = document.querySelector(`[data-filter="${category}"]`);
+      if (filterBtn) {
+          document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+          filterBtn.classList.add('active');
+      }
+  }
+  
+  loadAllProducts(productsToShow);
+}
+
 // Load All Products
 function loadAllProducts(filteredProducts = null) {
   const productsContainer = document.getElementById('all-products');
+  if (!productsContainer) return;
+  
   productsContainer.innerHTML = '';
   
   const productsToShow = filteredProducts || products;
   
   if (productsToShow.length === 0) {
-      productsContainer.innerHTML = '<p class="no-products">No products found matching your criteria.</p>';
+      productsContainer.innerHTML = '<div class="no-products"><h3>No products found</h3><p>Try adjusting your search or filter criteria.</p></div>';
       return;
   }
   
@@ -205,7 +291,9 @@ function createProductCard(product) {
   card.className = 'product-card';
   card.innerHTML = `
       <div class="product-img">
-          <img src="${product.images[0]}" alt="${product.name}">
+          <a href="product-details.html?id=${product.id}">
+              <img src="${product.images[0]}" alt="${product.name}">
+          </a>
       </div>
       <div class="product-info">
           <h3 class="product-name">${product.name}</h3>
@@ -257,33 +345,66 @@ function setupFiltering() {
 function setupSearch() {
   const searchInput = document.getElementById('search-input');
   const searchButton = document.getElementById('search-btn');
+  const mobileSearchInput = document.getElementById('mobile-search-input');
+  const mobileSearchButton = document.getElementById('mobile-search-btn');
   
+  // Desktop search
   if (searchInput && searchButton) {
-      searchButton.addEventListener('click', performSearch);
+      searchButton.addEventListener('click', () => performSearch('search-input'));
       searchInput.addEventListener('keyup', function(event) {
           if (event.key === 'Enter') {
-              performSearch();
+              performSearch('search-input');
+          }
+      });
+  }
+  
+  // Mobile search
+  if (mobileSearchInput && mobileSearchButton) {
+      mobileSearchButton.addEventListener('click', () => performSearch('mobile-search-input'));
+      mobileSearchInput.addEventListener('keyup', function(event) {
+          if (event.key === 'Enter') {
+              performSearch('mobile-search-input');
           }
       });
   }
 }
 
 // Perform Search
-function performSearch() {
-  const searchInput = document.getElementById('search-input');
+function performSearch(inputId = 'search-input') {
+  const searchInput = document.getElementById(inputId);
+  if (!searchInput) return;
+  
   const searchTerm = searchInput.value.toLowerCase().trim();
   
   if (searchTerm === '') {
-      loadAllProducts(products);
+      if (document.getElementById('all-products')) {
+          loadAllProducts(products);
+      }
       return;
   }
   
-  const filteredProducts = products.filter(product => 
-      product.name.toLowerCase().includes(searchTerm) || 
-      product.description.toLowerCase().includes(searchTerm)
-  );
+  // Close mobile menu if search was performed from mobile
+  if (inputId === 'mobile-search-input') {
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
+      if (hamburger && navMenu) {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+      }
+  }
   
-  loadAllProducts(filteredProducts);
+  // If on products page, filter and display results
+  if (document.getElementById('all-products')) {
+      const filteredProducts = products.filter(product => 
+          product.name.toLowerCase().includes(searchTerm) || 
+          product.description.toLowerCase().includes(searchTerm) ||
+          product.category.toLowerCase().includes(searchTerm)
+      );
+      loadAllProducts(filteredProducts);
+  } else {
+      // If on other pages, redirect to products page with search term
+      window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+  }
 }
 
 // Sort Products
